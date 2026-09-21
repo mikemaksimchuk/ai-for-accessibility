@@ -56,22 +56,31 @@ body {
 }
 .wrap { max-width:1460px; margin:0 auto; padding:0 clamp(16px,4vw,44px) 96px; }
 
-header.masthead { padding:clamp(34px,6vw,70px) 0 0; }
-.pubmark { margin:0 0 .85rem; font-size:.97rem; font-weight:500; color:var(--h2); }
+header.masthead { padding:0; }
+.pubmark { margin:0 0 .7rem; font-size:1.02rem; font-weight:600; color:var(--h2); }
 .pubmark strong { font-weight:800; }
-.title-block { border-bottom:5px solid var(--green); padding-bottom:26px; max-width:78ch; }
-h1 { font-size:clamp(2.1rem,5.2vw,3.35rem); line-height:1.06; font-weight:800; letter-spacing:-0.022em; color:var(--h1); margin:0 0 .5rem; }
-.subtitle { font-size:clamp(1.05rem,2.2vw,1.3rem); font-weight:500; color:var(--h2); margin:0 0 1rem; max-width:62ch; }
-.meta { font-size:.86rem; font-style:italic; color:var(--text-3); margin:0; }
-.intro { max-width:70ch; margin:34px 0 0; color:var(--text-2); }
+.title-block { margin:0 calc(-1 * clamp(16px,4vw,44px)); max-width:none;
+  padding:clamp(30px,4.4vw,52px) clamp(16px,4vw,44px) clamp(24px,3vw,36px);
+  background:var(--surface); border-bottom:6px solid var(--green); }
+h1 { font-size:clamp(2.35rem,5.7vw,4rem); line-height:1.02; font-weight:800; letter-spacing:-0.026em; color:var(--h1); margin:0 0 .6rem; max-width:22ch; }
+.subtitle { font-size:clamp(1.15rem,2.4vw,1.5rem); font-weight:600; color:var(--h2); margin:0 0 1.15rem; max-width:52ch; line-height:1.32; }
+.meta { font-size:.92rem; color:var(--text-2); margin:0 0 .25rem; font-weight:500; }
+.title-block .meta:last-child { margin-bottom:0; color:var(--text-3); font-weight:400; }
+.intro { margin:34px 0 0; color:var(--text-2); }
+@media (min-width:1000px) {
+  .intro { columns:2; column-gap:54px; }
+  .intro p { break-inside:avoid; margin-top:0; }
+}
 .intro p { margin:0 0 1rem; }
 .intro strong { font-weight:700; color:var(--text); }
 
-.filter { position:sticky; top:var(--brandh); z-index:30; margin:38px 0 8px; background:var(--page-bg);
-  padding:14px 0 12px; border-bottom:1px solid var(--rule); display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; }
-.filter-label { font-size:.88rem; color:var(--text-3); margin-right:2px; }
-.chip { scroll-margin-top:calc(var(--brandh) + 14px); font:inherit; font-size:.92rem; font-weight:600; cursor:pointer; background:var(--surface);
-  color:var(--chip-fg); border:1.5px solid var(--rule); border-radius:999px; padding:6px 15px; }
+.filter { position:sticky; top:var(--brandh); z-index:30; margin:52px 0 0; background:var(--page-bg);
+  padding:16px 0 15px; border-top:5px solid var(--green); border-bottom:1px solid var(--rule); }
+.filter-label { display:block; margin:0 0 11px; font-size:1.05rem; font-weight:700;
+  color:var(--h2); letter-spacing:-0.01em; }
+.chiprow { display:flex; flex-wrap:wrap; align-items:center; gap:9px; }
+.chip { scroll-margin-top:calc(var(--brandh) + 14px); font:inherit; font-size:.97rem; font-weight:600; cursor:pointer; background:var(--surface);
+  color:var(--chip-fg); border:1.5px solid var(--rule); border-radius:999px; padding:8px 18px; }
 .chip:hover { border-color:var(--mid-teal); }
 .chip[aria-pressed="true"] { background:var(--thead-bg); color:var(--thead-fg); border-color:var(--thead-bg); }
 .chip.reset { margin-left:auto; color:var(--cta); border-color:transparent; background:transparent; text-decoration:underline; text-underline-offset:3px; }
@@ -107,12 +116,13 @@ h1 { font-size:clamp(2.1rem,5.2vw,3.35rem); line-height:1.06; font-weight:800; l
 .themetoggle:hover { border-color:var(--mid-teal); }
 .themetoggle svg { flex:none; }
 
-.areafilter { margin:4px 0 0; padding:16px 0 4px; border-bottom:1px solid var(--rule); }
-.af-head { display:flex; align-items:baseline; gap:10px; margin-bottom:12px; }
+.areafilter { margin:0; padding:20px 0 8px; border-bottom:1px solid var(--rule); }
+.af-head { display:flex; align-items:center; gap:10px; margin-bottom:13px; }
+.af-head .filter-label { margin:0; }
 .af-head .reset { margin-left:auto; }
 .af-group { margin-bottom:8px; border:1px solid var(--rule); border-radius:9px;
   background:var(--surface); overflow:hidden; }
-.af-label { margin:0; padding:11px 15px; font-size:.88rem; font-weight:700; color:var(--h2);
+.af-label { margin:0; padding:13px 16px; font-size:.95rem; font-weight:700; color:var(--h2);
   cursor:pointer; list-style:none; display:flex; align-items:center; gap:10px;
   scroll-margin-top:calc(var(--brandh) + 14px); }
 .af-label::-webkit-details-marker { display:none; }
@@ -203,13 +213,15 @@ pre.prompt { margin:0; background:var(--code-bg); color:var(--code-fg); border-r
   color:var(--chip-fg); border:1.5px solid var(--rule); border-radius:999px; padding:6px 17px; }
 .closebtn:hover { border-color:var(--mid-teal); }
 
-.rails { margin-top:64px; border-top:5px solid var(--green); padding-top:30px; }
+.rails { margin-top:52px; border-top:1px solid var(--rule); padding-top:30px; }
 .rails h2 { margin-bottom:.4rem; }
 .rails > p.group-lede { margin-bottom:22px; }
-.rail-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:10px; overflow:hidden; }
+.rail-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:10px; overflow:hidden; }
 .rail { background:var(--surface); padding:20px 22px; }
 .rail h3 { margin:0 0 .45rem; font-size:1rem; font-weight:700; color:var(--h2); line-height:1.35; }
 .rail p { margin:0; font-size:.93rem; color:var(--text-2); }
+@media (max-width:1040px) { .rail-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px) { .rail-grid { grid-template-columns:1fr; } }
 
 .notice { margin-top:44px; background:var(--note-bg); border-left:5px solid var(--orange); padding:20px 24px; border-radius:0 10px 10px 0; max-width:82ch; }
 .notice h3 { margin:0 0 .5rem; font-size:1.02rem; font-weight:700; color:var(--h2); }
@@ -284,8 +296,8 @@ footer a { color:var(--cta); text-decoration:underline; text-underline-offset:2p
     <p class="pubmark">A practice reference from the Michigan Virtual <strong>AI Lab</strong></p>
     <h1>AI accessibility and learner diversity matrix</h1>
     <p class="subtitle">Where AI meaningfully reduces access barriers, organized by learner need and by who is doing the work.</p>
-    <p class="meta">29 areas of need, 116 role-specific prompts, 54 cited sources</p>
-    <p class="meta">Michigan Virtual Learning Research Institute, September 2026</p>
+    <p class="meta">29 areas of need · 116 role-specific prompts · 54 cited sources</p>
+    <p class="meta">Michigan Virtual Learning Research Institute · September 2026</p>
   </div>
 
   <div class="intro">
@@ -298,15 +310,35 @@ footer a { color:var(--cta); text-decoration:underline; text-underline-offset:2p
 
 <main id="main">
 
+<section class="rails">
+  <h2>Six things to settle before any of this reaches a student</h2>
+  <p class="group-lede">These are the failure points that turn an accessibility gain into a compliance problem.</p>
+  <div class="rail-grid"><div class="rail"><h3>AI output is a draft, not an accommodation of record.</h3><p>If an IEP specifies a qualified interpreter, live captions do not satisfy it. If it specifies braille instruction, a screen reader does not satisfy it. AI reduces the labor of producing accessible material. It does not change what the plan legally requires.</p></div>
+<div class="rail"><h3>Auto-generated alt text and captions need a human pass.</h3><p>Generated alt text describes what is in the picture. It does not know why you assigned the picture. The instructional point is the part a person has to add.</p></div>
+<div class="rail"><h3>Student data needs an agreement before it goes anywhere.</h3><p>IEPs, 504 plans, evaluation reports, behavior data, and health information are education records. Confirm a signed data privacy agreement covers the specific tool before any of it is pasted into a prompt. Every prompt here uses bracketed placeholders for that reason.</p></div>
+<div class="rail"><h3>Never let AI issue a standalone label.</h3><p>Risk flags, behavior classifications, disability predictions, and language proficiency calls stay with the team. AI can organize the evidence a team reviews. It does not get a vote.</p></div>
+<div class="rail"><h3>WCAG conformance is the floor, not the goal.</h3><p>A page can pass every automated check and still be unusable. Test with the people who rely on it, and budget for that testing the same way you budget for the license.</p></div>
+<div class="rail"><h3>Translation quality varies sharply by language.</h3><p>Machine translation performs well in high-resource languages and poorly in many of the languages Michigan families actually speak. Verify before relying on it for anything consequential.</p></div></div>
+</section>
+
+<div class="notice">
+  <h3>Current federal deadline, as of September 2026</h3>
+  <p>The ADA Title II digital accessibility rule still requires <strong>WCAG 2.1 Level AA</strong> for web content and mobile apps a public entity provides or makes available, including through vendors. On April 20, 2026, the Department of Justice issued an interim final rule extending the compliance dates by one year: <strong>April 26, 2027</strong> for public entities serving a total population of 50,000 or more, and <strong>April 26, 2028</strong> for smaller entities and special district governments.</p>
+  <p>The standard, the scope, and the exceptions did not change — only the dates. Existing Title II effective-communication obligations apply now, and private litigation is unaffected by the extension. Districts should confirm with counsel which date applies to them, since the threshold turns on the population of the jurisdiction served.</p>
+  <p><a href="https://www.federalregister.gov/documents/2026/04/20/2026-07663/extension-of-compliance-dates-for-nondiscrimination-on-the-basis-of-disability-accessibility-of-web">Read the interim final rule in the Federal Register</a></p>
+</div>
+
 <div class="filter">
-  <span class="filter-label">Show columns for</span>
-  <button type="button" class="chip" data-filter="student" aria-pressed="false">Student</button><button type="button" class="chip" data-filter="parent" aria-pressed="false">Parent</button><button type="button" class="chip" data-filter="teacher" aria-pressed="false">Teacher</button><button type="button" class="chip" data-filter="admin" aria-pressed="false">Administrator</button>
-  <button type="button" class="chip reset" id="reset" hidden>Show all roles</button>
+  <p class="filter-label">Show Columns by Role</p>
+  <div class="chiprow">
+    <button type="button" class="chip" data-filter="student" aria-pressed="false">Student</button><button type="button" class="chip" data-filter="parent" aria-pressed="false">Parent</button><button type="button" class="chip" data-filter="teacher" aria-pressed="false">Teacher</button><button type="button" class="chip" data-filter="admin" aria-pressed="false">Administrator</button>
+    <button type="button" class="chip reset" id="reset" hidden>Show all roles</button>
+  </div>
 </div>
 
 <div class="areafilter">
   <div class="af-head">
-    <span class="filter-label">Or narrow to one area of need</span>
+    <p class="filter-label">Show Rows by Area of Eligibility</p>
     <button type="button" class="chip reset" id="areareset" hidden>Show all areas</button>
   </div>
   <details class="af-group"><summary class="af-label">Special education eligibility categories<span class="af-count">13 areas</span></summary><div class="af-chips"><button type="button" class="chip areachip" data-area="specific-learning-disability" aria-pressed="false">Specific Learning Disability</button><button type="button" class="chip areachip" data-area="speech-and-language-impairment" aria-pressed="false">Speech and Language Impairment</button><button type="button" class="chip areachip" data-area="other-health-impairment" aria-pressed="false">Other Health Impairment</button><button type="button" class="chip areachip" data-area="autism-spectrum-disorder" aria-pressed="false">Autism Spectrum Disorder</button><button type="button" class="chip areachip" data-area="emotional-impairment" aria-pressed="false">Emotional Impairment</button><button type="button" class="chip areachip" data-area="cognitive-impairment" aria-pressed="false">Cognitive Impairment</button><button type="button" class="chip areachip" data-area="visual-impairment" aria-pressed="false">Visual Impairment</button><button type="button" class="chip areachip" data-area="deaf-or-hard-of-hearing" aria-pressed="false">Deaf or Hard of Hearing</button><button type="button" class="chip areachip" data-area="deaf-blindness" aria-pressed="false">Deaf-Blindness</button><button type="button" class="chip areachip" data-area="physical-impairment" aria-pressed="false">Physical Impairment</button><button type="button" class="chip areachip" data-area="traumatic-brain-injury" aria-pressed="false">Traumatic Brain Injury</button><button type="button" class="chip areachip" data-area="severe-multiple-impairment" aria-pressed="false">Severe Multiple Impairment</button><button type="button" class="chip areachip" data-area="early-childhood-developmental-delay" aria-pressed="false">Early Childhood Developmental Delay</button></div></details><details class="af-group"><summary class="af-label">Populations served outside special education eligibility<span class="af-count">8 areas</span></summary><div class="af-chips"><button type="button" class="chip areachip" data-area="english-learners-and-multilingual-students" aria-pressed="false">English learners and multilingual students</button><button type="button" class="chip areachip" data-area="section-504-only-no-iep" aria-pressed="false">Section 504 only, no IEP</button><button type="button" class="chip areachip" data-area="gifted-talented-and-twice-exceptional" aria-pressed="false">Gifted, talented, and twice-exceptional</button><button type="button" class="chip areachip" data-area="students-experiencing-homelessness-or-in-foster-care" aria-pressed="false">Students experiencing homelessness or in foster care</button><button type="button" class="chip areachip" data-area="migrant-and-highly-mobile-students" aria-pressed="false">Migrant and highly mobile students</button><button type="button" class="chip areachip" data-area="medically-fragile-homebound-and-chronically-absent" aria-pressed="false">Medically fragile, homebound, and chronically absent</button><button type="button" class="chip areachip" data-area="rural-and-limited-connectivity-learners" aria-pressed="false">Rural and limited-connectivity learners</button><button type="button" class="chip areachip" data-area="trauma-affected-learners" aria-pressed="false">Trauma-affected learners</button></div></details><details class="af-group"><summary class="af-label">Universal access layers<span class="af-count">8 areas</span></summary><div class="af-chips"><button type="button" class="chip areachip" data-area="captions-and-transcripts" aria-pressed="false">Captions and transcripts</button><button type="button" class="chip areachip" data-area="alt-text-and-described-visuals" aria-pressed="false">Alt text and described visuals</button><button type="button" class="chip areachip" data-area="reading-level-and-plain-language" aria-pressed="false">Reading level and plain language</button><button type="button" class="chip areachip" data-area="keyboard-switch-and-voice-operation" aria-pressed="false">Keyboard, switch, and voice operation</button><button type="button" class="chip areachip" data-area="color-contrast-and-visual-density" aria-pressed="false">Color, contrast, and visual density</button><button type="button" class="chip areachip" data-area="cognitive-load-and-document-structure" aria-pressed="false">Cognitive load and document structure</button><button type="button" class="chip areachip" data-area="accessible-assessment" aria-pressed="false">Accessible assessment</button><button type="button" class="chip areachip" data-area="device-bandwidth-and-offline-access" aria-pressed="false">Device, bandwidth, and offline access</button></div></details>
@@ -387,24 +419,6 @@ footer a { color:var(--cta); text-decoration:underline; text-underline-offset:2p
     </table>
   </div>
 </section>
-
-<section class="rails">
-  <h2>Six things to settle before any of this reaches a student</h2>
-  <p class="group-lede">These are the failure points that turn an accessibility gain into a compliance problem.</p>
-  <div class="rail-grid"><div class="rail"><h3>AI output is a draft, not an accommodation of record.</h3><p>If an IEP specifies a qualified interpreter, live captions do not satisfy it. If it specifies braille instruction, a screen reader does not satisfy it. AI reduces the labor of producing accessible material. It does not change what the plan legally requires.</p></div>
-<div class="rail"><h3>Auto-generated alt text and captions need a human pass.</h3><p>Generated alt text describes what is in the picture. It does not know why you assigned the picture. The instructional point is the part a person has to add.</p></div>
-<div class="rail"><h3>Student data needs an agreement before it goes anywhere.</h3><p>IEPs, 504 plans, evaluation reports, behavior data, and health information are education records. Confirm a signed data privacy agreement covers the specific tool before any of it is pasted into a prompt. Every prompt here uses bracketed placeholders for that reason.</p></div>
-<div class="rail"><h3>Never let AI issue a standalone label.</h3><p>Risk flags, behavior classifications, disability predictions, and language proficiency calls stay with the team. AI can organize the evidence a team reviews. It does not get a vote.</p></div>
-<div class="rail"><h3>WCAG conformance is the floor, not the goal.</h3><p>A page can pass every automated check and still be unusable. Test with the people who rely on it, and budget for that testing the same way you budget for the license.</p></div>
-<div class="rail"><h3>Translation quality varies sharply by language.</h3><p>Machine translation performs well in high-resource languages and poorly in many of the languages Michigan families actually speak. Verify before relying on it for anything consequential.</p></div></div>
-</section>
-
-<div class="notice">
-  <h3>Current federal deadline, as of September 2026</h3>
-  <p>The ADA Title II digital accessibility rule still requires <strong>WCAG 2.1 Level AA</strong> for web content and mobile apps a public entity provides or makes available, including through vendors. On April 20, 2026, the Department of Justice issued an interim final rule extending the compliance dates by one year: <strong>April 26, 2027</strong> for public entities serving a total population of 50,000 or more, and <strong>April 26, 2028</strong> for smaller entities and special district governments.</p>
-  <p>The standard, the scope, and the exceptions did not change — only the dates. Existing Title II effective-communication obligations apply now, and private litigation is unaffected by the extension. Districts should confirm with counsel which date applies to them, since the threshold turns on the population of the jurisdiction served.</p>
-  <p><a href="https://www.federalregister.gov/documents/2026/04/20/2026-07663/extension-of-compliance-dates-for-nondiscrimination-on-the-basis-of-disability-accessibility-of-web">Read the interim final rule in the Federal Register</a></p>
-</div>
 
 </main>
 
